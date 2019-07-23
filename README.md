@@ -50,3 +50,25 @@ def extractLayoutByCermine():
     return command
 
 ```
+
+## How run jar file in Python environment:
+```python
+def call_run_layout_extractor():
+    command = ''
+    try:
+        print(command)
+        os.chdir(config_url_venu())        
+        command = 'java -jar cermine.layout.extractor-0.0.1-jar-with-dependencies.jar '
+        command += config_url_pdfs() + ' '
+        command += config_url_Layouts() + ' '
+        command += '90000000'
+        print(command)
+        proc = subprocess.Popen([command], stdout=subprocess.PIPE, shell=True)
+        (output, err) = proc.communicate()
+        print(output)
+    except:
+        print(traceback.format_exc())
+        logf.write(traceback.format_exc())
+        logf.write('*' * 50 + '\n')
+    return command
+```
